@@ -9,15 +9,18 @@ class DeveloperScreen extends StatefulWidget {
 }
 
 class _DeveloperScreenState extends State<DeveloperScreen> {
-  final Uri _url = Uri.parse('https://github.com/Sarthak-ONS');
+  final Uri _url = Uri.http('github.com/', 'Sarthak-ONS/calc-io');
+  final Uri _gmailUrl = Uri.parse("mailto:agarwalsarthak456@gmail.com");
 
-  Future<void> open() async {
+  Future<void> open(value) async {
     try {
       await launchUrl(
-        _url,
-        mode: LaunchMode.inAppWebView,
+        value,
+        mode: LaunchMode.externalApplication,
         webViewConfiguration: const WebViewConfiguration(
-            enableJavaScript: true, enableDomStorage: true),
+          enableJavaScript: true,
+          enableDomStorage: true,
+        ),
       );
     } catch (e) {
       print(e);
@@ -86,7 +89,32 @@ class _DeveloperScreenState extends State<DeveloperScreen> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    open();
+                    open(_url);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Icon(
+                          Icons.table_chart_outlined,
+                          color: Colors.blue,
+                          size: 15,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          'GitHub',
+                          style: TextStyle(color: Colors.blue, fontSize: 15),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    open(_gmailUrl);
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -107,26 +135,6 @@ class _DeveloperScreenState extends State<DeveloperScreen> {
                         ),
                       ],
                     ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        Icons.mail_outline_outlined,
-                        color: Colors.blue,
-                        size: 15,
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        'Github',
-                        style: TextStyle(color: Colors.blue, fontSize: 15),
-                      ),
-                    ],
                   ),
                 ),
               ],
