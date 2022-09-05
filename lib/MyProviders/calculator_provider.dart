@@ -47,10 +47,10 @@ class CalculateProvider extends ChangeNotifier {
     return a! * b!;
   }
 
-  double getdivision() {
+  String getdivision() {
     if (b! == 0) {
-      return 0;
+      return "0";
     }
-    return (a! / b!).toDouble().truncateToDouble();
+    return (a! / b!).toStringAsFixed(2);
   }
 }

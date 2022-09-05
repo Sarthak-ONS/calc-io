@@ -9,7 +9,7 @@ class DeveloperScreen extends StatefulWidget {
 }
 
 class _DeveloperScreenState extends State<DeveloperScreen> {
-  final Uri _url = Uri.http('github.com/', 'Sarthak-ONS/calc-io');
+  final Uri _url = Uri.parse('http://github.com/Sarthak-ONS/calc-io.git');
   final Uri _gmailUrl = Uri.parse("mailto:agarwalsarthak456@gmail.com");
 
   Future<void> open(value) async {
@@ -17,10 +17,6 @@ class _DeveloperScreenState extends State<DeveloperScreen> {
       await launchUrl(
         value,
         mode: LaunchMode.externalApplication,
-        webViewConfiguration: const WebViewConfiguration(
-          enableJavaScript: true,
-          enableDomStorage: true,
-        ),
       );
     } catch (e) {
       print(e);
@@ -56,12 +52,23 @@ class _DeveloperScreenState extends State<DeveloperScreen> {
           children: [
             const Text(
               'This app is made for making certains calculations easy!',
+              style: TextStyle(
+                fontWeight: FontWeight.w300,
+              ),
             ),
             const SizedBox(
               height: 20,
             ),
             const Text(
-              'Note : In case you want us to add a new feature, or report a bug, please raise a issue on github! or mail us at the address mentioned below!',
+                'In coding questions, mostly questions contains bitwise calculations, so you can use this app to get bitwise answers easily, no adds, no waiting time like in websites!'),
+            const SizedBox(
+              height: 20,
+            ),
+            const Text(
+              'Note : In case you want us to add a new calculation, or report a bug, please raise a issue on github! or mail us at the address mentioned below!',
+              style: TextStyle(
+                fontWeight: FontWeight.w300,
+              ),
             ),
             const SizedBox(
               height: 20,
